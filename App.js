@@ -2,14 +2,25 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
 
 export default class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      uri: require('./src/images/dice1.png')
+    }
+  }
+
+  getRandomValue = () => {
+   return Math.floor(Math.random() * 6) + 1
+  }
+
   playButtonPressed = () => {
-    Alert.alert("Hey")
+    Alert.alert("Hey" + this.getRandomValue())
   }
   render(){
     return (
       <View style={styles.container}>
         <Image 
-        source={require('./src/images/dice1.png')}
+        source={this.state.uri}
         />
         <TouchableOpacity
         onPress={this.playButtonPressed}
